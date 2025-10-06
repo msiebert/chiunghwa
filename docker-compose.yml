@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  jekyll:
+    image: jekyll/jekyll:4.2.2
+    container_name: chiunghwa-jekyll
+    volumes:
+      - .:/srv/jekyll
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    command: jekyll serve --host 0.0.0.0 --livereload --force_polling
+    environment:
+      - JEKYLL_ENV=development

@@ -1,0 +1,13 @@
+title: Suzuki Graduation Registration
+description: Registration page for Suzuki graduation
+baseurl: ""
+url: ""
+
+# Build settings
+markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Dockerfile
+  - docker-compose.yml
+  - README.md
