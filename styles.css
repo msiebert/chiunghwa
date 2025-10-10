@@ -73,7 +73,8 @@ label {
 }
 
 input[type="text"],
-input[type="number"] {
+input[type="number"],
+select {
     width: 100%;
     padding: 16px 18px;
     font-size: 16px;
@@ -84,10 +85,28 @@ input[type="number"] {
     background: rgba(255, 255, 255, 0.6);
     color: #2d1f14;
     backdrop-filter: blur(10px);
+    cursor: pointer;
+    appearance: none;
+}
+
+select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b6f47' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 18px;
+    padding-right: 48px;
+}
+
+input[type="text"],
+input[type="number"] {
+    cursor: text;
+    background-image: none;
+    padding-right: 18px;
 }
 
 input[type="text"]:focus,
-input[type="number"]:focus {
+input[type="number"]:focus,
+select:focus {
     border-color: #8b6f47;
     box-shadow: 0 0 0 4px rgba(139, 111, 71, 0.12);
     background: rgba(255, 255, 255, 0.8);
@@ -95,6 +114,16 @@ input[type="number"]:focus {
 
 input[type="text"]::placeholder,
 input[type="number"]::placeholder {
+    color: #b8a89a;
+}
+
+select option {
+    background: white;
+    color: #2d1f14;
+    padding: 12px;
+}
+
+select option:disabled {
     color: #b8a89a;
 }
 

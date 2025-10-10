@@ -22,45 +22,38 @@
             </div>
 
             <div class="form-group">
-                <label>Gender<span class="required">*</span></label>
-                <div class="radio-group">
-                    <label class="radio-option">
-                        <input type="radio" name="entry.1834085698" value="Male" required>
-                        <span class="radio-custom"></span>
-                        <span class="radio-label">Male</span>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="entry.1834085698" value="Female" required>
-                        <span class="radio-custom"></span>
-                        <span class="radio-label">Female</span>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="entry.1834085698" value="Other" required>
-                        <span class="radio-custom"></span>
-                        <span class="radio-label">Other</span>
-                    </label>
-                </div>
+                <label for="gender">Gender<span class="required">*</span></label>
+                <select id="gender" name="entry.1834085698" required>
+                    <option value="" disabled selected>Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label for="level">Level<span class="required">*</span></label>
-                <input type="text" id="level" name="entry.1998604625" placeholder="Enter level" required>
+                <select id="level" name="entry.1998604625" required>
+                    <option value="" disabled selected>Select level</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <label>Preferred Time<span class="required">*</span></label>
-                <div class="radio-group">
-                    <label class="radio-option">
-                        <input type="radio" name="entry.1195697417" value="12pm Dec 6, 2025" required>
-                        <span class="radio-custom"></span>
-                        <span class="radio-label">12pm Dec 6, 2025</span>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="entry.1195697417" value="2:30pm Dec 6, 2025" required>
-                        <span class="radio-custom"></span>
-                        <span class="radio-label">2:30pm Dec 6, 2025</span>
-                    </label>
-                </div>
+                <label for="preferredTime">Preferred Time<span class="required">*</span></label>
+                <select id="preferredTime" name="entry.1195697417" required>
+                    <option value="" disabled selected>Select preferred time</option>
+                    <option value="12pm Dec 6, 2025">12pm Dec 6, 2025</option>
+                    <option value="2:30pm Dec 6, 2025">2:30pm Dec 6, 2025</option>
+                </select>
             </div>
 
             <div class="form-group">
