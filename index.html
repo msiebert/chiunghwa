@@ -9,60 +9,74 @@
 <body>
     <div class="card">
         <h1>Suzuki Graduation Registration Dec 2025</h1>
-        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfcwhpeAi2EkpDM1CaU1gZ7w0GK-CC8Es6FYG8oOT6URTezag/formResponse" method="POST" target="_blank">
+        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfcwhpeAi2EkpDM1CaU1gZ7w0GK-CC8Es6FYG8oOT6URTezag/formResponse" method="POST" target="_blank" id="registrationForm">
 
-            <div class="form-group">
-                <label for="studentName">Student Name<span class="required">*</span></label>
-                <input type="text" id="studentName" name="entry.416937478" placeholder="Enter student name" required>
+            <div class="form-pages">
+                <!-- Page 1 -->
+                <div class="form-page active" id="page1">
+                    <div class="form-group">
+                        <label for="studentName">Student Name<span class="required">*</span></label>
+                        <input type="text" id="studentName" name="entry.416937478" placeholder="Enter student name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">Age<span class="required">*</span></label>
+                        <input type="text" id="age" name="entry.1074745682" placeholder="Enter age" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Gender<span class="required">*</span></label>
+                        <select id="gender" name="entry.1834085698" required>
+                            <option value="" disabled selected>Select gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <button type="button" id="nextBtn">Next</button>
+                </div>
+
+                <!-- Page 2 -->
+                <div class="form-page" id="page2">
+                    <div class="form-group">
+                        <label for="level">Level<span class="required">*</span></label>
+                        <select id="level" name="entry.1998604625" required>
+                            <option value="" disabled selected>Select level</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preferredTime">Preferred Time<span class="required">*</span></label>
+                        <select id="preferredTime" name="entry.1195697417" required>
+                            <option value="" disabled selected>Select preferred time</option>
+                            <option value="12pm Dec 6, 2025">12pm Dec 6, 2025</option>
+                            <option value="2:30pm Dec 6, 2025">2:30pm Dec 6, 2025</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="duration">Performance Duration<span class="required">*</span></label>
+                        <input type="text" id="duration" name="entry.498753271" placeholder="Enter performance duration" required>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" id="backBtn">Back</button>
+                        <button type="submit" id="submitBtn">Submit</button>
+                    </div>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="age">Age<span class="required">*</span></label>
-                <input type="text" id="age" name="entry.1074745682" placeholder="Enter age" required>
-            </div>
-
-            <div class="form-group">
-                <label for="gender">Gender<span class="required">*</span></label>
-                <select id="gender" name="entry.1834085698" required>
-                    <option value="" disabled selected>Select gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="level">Level<span class="required">*</span></label>
-                <select id="level" name="entry.1998604625" required>
-                    <option value="" disabled selected>Select level</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="preferredTime">Preferred Time<span class="required">*</span></label>
-                <select id="preferredTime" name="entry.1195697417" required>
-                    <option value="" disabled selected>Select preferred time</option>
-                    <option value="12pm Dec 6, 2025">12pm Dec 6, 2025</option>
-                    <option value="2:30pm Dec 6, 2025">2:30pm Dec 6, 2025</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="duration">Performance Duration<span class="required">*</span></label>
-                <input type="text" id="duration" name="entry.498753271" placeholder="Enter performance duration" required>
-            </div>
-
-            <button type="submit">Submit</button>
         </form>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
