@@ -296,6 +296,19 @@ button[type="button"] {
     box-shadow: 0 4px 12px rgba(128, 128, 128, 0.3);
 }
 
+#proceedPaymentBtn {
+    font-size: 14px;
+}
+
+#backFromPaymentBtn {
+    background: linear-gradient(135deg, #a0a0a0 0%, #808080 100%);
+    box-shadow: 0 4px 12px rgba(128, 128, 128, 0.3);
+}
+
+#backFromPaymentBtn:hover {
+    box-shadow: 0 6px 20px rgba(128, 128, 128, 0.4);
+}
+
 #backBtn:hover {
     box-shadow: 0 6px 20px rgba(128, 128, 128, 0.4);
 }
@@ -330,6 +343,64 @@ button[type="button"]:disabled:hover {
     margin-left: 4px;
 }
 
+/* Payment Page Styles */
+.payment-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 24px;
+    text-align: center;
+}
+
+.payment-content h2 {
+    color: #2d1f14;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.payment-content p {
+    color: #4a3829;
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.stripe-btn {
+    width: 100%;
+    padding: 16px 18px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #625AC7 0%, #4C40D1 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(98, 90, 199, 0.3);
+}
+
+.stripe-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(98, 90, 199, 0.4);
+}
+
+.stripe-btn:active {
+    transform: translateY(0);
+}
+
+.secondary-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #a0a0a0 0%, #808080 100%);
+    box-shadow: 0 4px 12px rgba(128, 128, 128, 0.3);
+}
+
+.secondary-btn:hover {
+    box-shadow: 0 6px 20px rgba(128, 128, 128, 0.4);
+}
+
 /* Success Page Styles */
 .success-content {
     display: flex;
@@ -346,7 +417,7 @@ button[type="button"]:disabled:hover {
     opacity: 0;
 }
 
-#page3.active .success-checkmark {
+#page4.active .success-checkmark {
     animation: fadeInBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
@@ -373,7 +444,7 @@ button[type="button"]:disabled:hover {
     stroke-dashoffset: 283;
 }
 
-#page3.active .success-circle {
+#page4.active .success-circle {
     animation: drawCircle 0.5s ease-out 0.1s forwards;
 }
 
@@ -388,7 +459,7 @@ button[type="button"]:disabled:hover {
     stroke-dashoffset: 60;
 }
 
-#page3.active .success-check {
+#page4.active .success-check {
     animation: drawCheck 0.3s ease-out 0.4s forwards;
 }
 
@@ -406,7 +477,7 @@ button[type="button"]:disabled:hover {
     opacity: 0;
 }
 
-#page3.active .success-text {
+#page4.active .success-text {
     animation: fadeInText 0.4s ease-out 0.6s forwards;
 }
 

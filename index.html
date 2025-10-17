@@ -71,15 +71,26 @@
 
                     <div class="button-group">
                         <button type="button" id="backBtn">Back</button>
-                        <button type="submit" id="submitBtn">Submit</button>
+                        <button type="button" id="proceedPaymentBtn">Proceed to Payment</button>
+                    </div>
+                </div>
+
+                <!-- Page 3 - Payment -->
+                <div class="form-page" id="page3">
+                    <div class="payment-content">
+                        <h2>Complete Your Registration</h2>
+                        <p>Registration Fee: <strong>$35.00</strong></p>
+                        <p>Please complete the payment to finalize your registration.</p>
+                        <button type="button" id="stripeCheckoutBtn" class="stripe-btn">Pay with Stripe</button>
+                        <button type="button" id="backFromPaymentBtn" class="secondary-btn">Back</button>
                     </div>
                 </div>
             </div>
 
         </form>
 
-        <!-- Page 3 - Success (outside form) -->
-        <div class="form-page" id="page3">
+        <!-- Page 4 - Success (outside form) -->
+        <div class="form-page" id="page4">
             <div class="success-content">
                 <svg class="success-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                     <circle class="success-circle" cx="50" cy="50" r="45" fill="none" stroke="#4CAF50" stroke-width="3"/>

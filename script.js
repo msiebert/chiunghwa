@@ -53,14 +53,19 @@ function clearFormCookie() {
     document.cookie = `${COOKIE_NAME}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`;
 }
 
+const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/test_3cI4gyba8gbvbzm99IbEA00';
+
 // Get all form elements
 const form = document.getElementById('registrationForm');
 const page1 = document.getElementById('page1');
 const page2 = document.getElementById('page2');
 const page3 = document.getElementById('page3');
+const page4 = document.getElementById('page4');
 const nextBtn = document.getElementById('nextBtn');
 const backBtn = document.getElementById('backBtn');
-const submitBtn = document.getElementById('submitBtn');
+const proceedPaymentBtn = document.getElementById('proceedPaymentBtn');
+const stripeCheckoutBtn = document.getElementById('stripeCheckoutBtn');
+const backFromPaymentBtn = document.getElementById('backFromPaymentBtn');
 const iframe = document.getElementById('hidden_iframe');
 
 // Set form to submit to hidden iframe
@@ -73,15 +78,15 @@ if (iframe) {
         console.log('Form submitted successfully to Google Forms');
 
         // Transition to success page
-        page2.classList.remove('active');
-        page2.classList.add('slide-out-left');
-        page3.classList.add('active');
+        page3.classList.remove('active');
+        page3.classList.add('slide-out-left');
+        page4.classList.add('active');
 
         // Hide the form so it doesn't take up space
         form.style.display = 'none';
 
         // Position the success page at the top of the card
-        page3.style.top = '0';
+        page4.style.top = '0';
 
         // Clear the cookie since form was submitted
         clearFormCookie();
@@ -109,7 +114,7 @@ function validatePage2() {
     const isValid = formState.level !== '' &&
                     formState.preferredTime !== '' &&
                     formState.duration.trim() !== '';
-    submitBtn.disabled = !isValid;
+    proceedPaymentBtn.disabled = !isValid;
 }
 
 // Track form values in real-time
@@ -165,6 +170,41 @@ backBtn.addEventListener('click', () => {
     page1.classList.add('active');
 });
 
+// Handle Proceed to Payment button click
+proceedPaymentBtn.addEventListener('click', () => {
+    // Slide to payment page
+    page2.classList.remove('active');
+    page2.classList.add('slide-out-left');
+    page3.classList.add('active');
+});
+
+// Handle Stripe Checkout button click
+stripeCheckoutBtn.addEventListener('click', () => {
+    // Redirect to Stripe Payment Link
+    // The return URL will have ?payment=success parameter
+    window.location.href = STRIPE_PAYMENT_LINK + '?client_reference_id=' + Date.now();
+});
+
+// Handle Back from Payment button
+backFromPaymentBtn.addEventListener('click', () => {
+    // Slide back to page 2
+    page3.classList.remove('active');
+    page2.classList.remove('slide-out-left');
+    page2.classList.add('active');
+});
+
+// Check if returning from successful payment
+function checkPaymentSuccess() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('payment') === 'success') {
+        // Payment successful - auto-submit form to Google Forms
+        console.log('Payment successful - submitting form to Google Forms');
+        form.submit();
+        // Remove the payment=success parameter from URL to prevent resubmission
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+}
+
 // Handle form submission
 form.addEventListener('submit', () => {
     // Don't prevent default - let form submit to iframe
@@ -183,6 +223,9 @@ form.addEventListener('submit', () => {
 
 // Load saved form data from cookie on page load
 loadFormFromCookie();
+
+// Check if returning from successful payment
+checkPaymentSuccess();
 
 // Initialize button states
 validatePage1();
