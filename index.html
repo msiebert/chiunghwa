@@ -9,19 +9,19 @@
 <body>
     <div class="card">
         <h1>Suzuki Graduation Registration Dec 2025</h1>
-        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfcwhpeAi2EkpDM1CaU1gZ7w0GK-CC8Es6FYG8oOT6URTezag/formResponse" method="POST" target="_blank" id="registrationForm">
+        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfcwhpeAi2EkpDM1CaU1gZ7w0GK-CC8Es6FYG8oOT6URTezag/formResponse" method="POST" id="registrationForm">
 
             <div class="form-pages">
                 <!-- Page 1 -->
                 <div class="form-page active" id="page1">
                     <div class="form-group">
                         <label for="studentName">Student Name<span class="required">*</span></label>
-                        <input type="text" id="studentName" name="entry.416937478" placeholder="Enter student name" required>
+                        <input type="text" id="studentName" name="entry.12817516" placeholder="Enter student name" required>
                     </div>
 
                     <div class="form-group">
                         <label for="age">Age<span class="required">*</span></label>
-                        <input type="text" id="age" name="entry.1074745682" placeholder="Enter age" required>
+                        <input type="text" id="age" name="entry.103800521" placeholder="Enter age" required>
                     </div>
 
                     <div class="form-group">
@@ -41,7 +41,7 @@
                 <div class="form-page" id="page2">
                     <div class="form-group">
                         <label for="level">Level<span class="required">*</span></label>
-                        <select id="level" name="entry.1998604625" required>
+                        <select id="level" name="entry.140100761" required>
                             <option value="" disabled selected>Select level</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -66,7 +66,7 @@
 
                     <div class="form-group">
                         <label for="duration">Performance Duration<span class="required">*</span></label>
-                        <input type="text" id="duration" name="entry.498753271" placeholder="Enter performance duration" required>
+                        <input type="text" id="duration" name="entry.1944457958" placeholder="Enter performance duration" required>
                     </div>
 
                     <div class="button-group">
@@ -75,7 +75,22 @@
                     </div>
                 </div>
             </div>
+
         </form>
+
+        <!-- Page 3 - Success (outside form) -->
+        <div class="form-page" id="page3">
+            <div class="success-content">
+                <svg class="success-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <circle class="success-circle" cx="50" cy="50" r="45" fill="none" stroke="#4CAF50" stroke-width="3"/>
+                    <path class="success-check" fill="none" stroke="#4CAF50" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M30 50 L45 65 L70 35"/>
+                </svg>
+                <h2 class="success-text">Successfully registered</h2>
+            </div>
+        </div>
+
+        <!-- Hidden iframe for form submission (minimal size for Android compatibility) -->
+        <iframe name="hidden_iframe" id="hidden_iframe" style="position: absolute; left: -9999px; width: 1px; height: 1px;"></iframe>
     </div>
     <script src="script.js"></script>
 </body>

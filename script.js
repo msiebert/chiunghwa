@@ -57,9 +57,30 @@ function clearFormCookie() {
 const form = document.getElementById('registrationForm');
 const page1 = document.getElementById('page1');
 const page2 = document.getElementById('page2');
+const page3 = document.getElementById('page3');
 const nextBtn = document.getElementById('nextBtn');
 const backBtn = document.getElementById('backBtn');
 const submitBtn = document.getElementById('submitBtn');
+const iframe = document.getElementById('hidden_iframe');
+
+// Set form to submit to hidden iframe
+form.target = 'hidden_iframe';
+
+// Listen for iframe load event (form submission complete)
+if (iframe) {
+    iframe.onload = function() {
+        // Form has been submitted successfully
+        console.log('Form submitted successfully to Google Forms');
+
+        // Transition to success page
+        page2.classList.remove('active');
+        page2.classList.add('slide-out-left');
+        page3.classList.add('active');
+
+        // Clear the cookie since form was submitted
+        clearFormCookie();
+    };
+}
 
 // Get all input fields
 const studentNameInput = document.getElementById('studentName');
@@ -139,11 +160,12 @@ backBtn.addEventListener('click', () => {
 });
 
 // Handle form submission
-submitBtn.addEventListener('click', (e) => {
-    e.preventDefault();
+form.addEventListener('submit', () => {
+    // Don't prevent default - let form submit to iframe
+    // The iframe onload event will handle the success page transition
 
-    // Log form values to console
-    console.log('Form Values:', {
+    // Log form values to console for debugging
+    console.log('Submitting to Google Forms:', {
         'Student Name': formState.studentName,
         'Age': formState.age,
         'Gender': formState.gender,
@@ -151,17 +173,6 @@ submitBtn.addEventListener('click', (e) => {
         'Preferred Time': formState.preferredTime,
         'Performance Duration': formState.duration
     });
-
-    // Clear the cookie since form is being submitted
-    clearFormCookie();
-
-    // Show success message
-    alert('Form submitted! Check the console for values.');
-});
-
-// Prevent form from actually submitting
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
 });
 
 // Load saved form data from cookie on page load
