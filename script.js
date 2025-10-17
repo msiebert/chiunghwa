@@ -77,6 +77,12 @@ if (iframe) {
         page2.classList.add('slide-out-left');
         page3.classList.add('active');
 
+        // Hide the form so it doesn't take up space
+        form.style.display = 'none';
+
+        // Position the success page at the top of the card
+        page3.style.top = '0';
+
         // Clear the cookie since form was submitted
         clearFormCookie();
     };
