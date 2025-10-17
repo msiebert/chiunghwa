@@ -221,6 +221,24 @@ form.addEventListener('submit', () => {
     });
 });
 
+// Tooltip functionality - show on hover (desktop) or click (mobile)
+const tooltipIcon = document.querySelector('.tooltip-icon');
+const labelWithTooltip = document.querySelector('.label-with-tooltip');
+
+if (tooltipIcon && labelWithTooltip) {
+    tooltipIcon.addEventListener('click', (e) => {
+        e.stopPropagation();
+        labelWithTooltip.classList.toggle('tooltip-active');
+    });
+
+    // Close tooltip when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.label-with-tooltip')) {
+            labelWithTooltip.classList.remove('tooltip-active');
+        }
+    });
+}
+
 // Load saved form data from cookie on page load
 loadFormFromCookie();
 
