@@ -592,6 +592,7 @@ button[type="button"]:disabled:hover {
 @media (max-width: 600px) {
     .card {
         padding: 28px 28px;
+        min-height: 500px;
     }
 
     h1 {
@@ -604,35 +605,45 @@ button[type="button"]:disabled:hover {
     }
 
     .form-pages {
-        position: static !important;
-        height: auto !important;
-        width: 100% !important;
+        position: relative;
+        overflow: hidden;
+        height: auto;
+        width: 100%;
     }
 
     .card > .form-page {
-        position: static !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        width: 100% !important;
-        height: auto !important;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        width: 100%;
+        height: auto;
     }
 
     .form-page {
-        position: static !important;
-        width: 100% !important;
-        height: auto !important;
-        transform: none !important;
-        opacity: 1 !important;
-        display: none !important;
-        transition: none !important;
+        position: absolute;
+        width: 100%;
+        height: auto;
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.4s ease, visibility 0.4s ease;
+        transform: translateX(100%);
     }
 
     .form-page.active {
         display: flex !important;
-        opacity: 1 !important;
-        position: static !important;
+        opacity: 1;
+        visibility: visible;
+        position: relative;
+        transform: translateX(0);
     }
+
+    .form-page.slide-out-left {
+        transform: translateX(-100%);
+        opacity: 0;
+        visibility: hidden;
+    }
+
 
     .success-checkmark {
         width: 100px;
