@@ -589,6 +589,40 @@ button[type="button"]:disabled:hover {
     }
 }
 
+/* Loading Spinner Styles */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 32px;
+    text-align: center;
+}
+
+.spinner {
+    width: 120px;
+    height: 120px;
+    border: 5px solid rgba(139, 111, 71, 0.15);
+    border-top-color: #8b6f47;
+    border-right-color: #8b6f47;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-text {
+    color: #2d1f14;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
 @media (max-width: 600px) {
     .card {
         padding: 28px 28px;

@@ -197,9 +197,25 @@ backFromPaymentBtn.addEventListener('click', () => {
 function checkPaymentSuccess() {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('payment') === 'success') {
-        // Payment successful - auto-submit form to Google Forms
-        console.log('Payment successful - submitting form to Google Forms');
-        form.submit();
+        // Payment successful - show loading spinner
+        console.log('Payment successful - showing loading spinner');
+
+        // Get the form-pages container and replace it with spinner
+        const formPages = document.querySelector('.form-pages');
+        if (formPages) {
+            formPages.innerHTML = `
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    <p class="loading-text">Saving Registration Details</p>
+                </div>
+            `;
+        }
+
+        // Submit form to Google Forms after a brief delay
+        setTimeout(() => {
+            form.submit();
+        }, 500);
+
         // Remove the payment=success parameter from URL to prevent resubmission
         window.history.replaceState({}, document.title, window.location.pathname);
     }
