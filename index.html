@@ -60,7 +60,7 @@
                         <label for="preferredTime">Preferred Time<span class="required">*</span></label>
                         <select id="preferredTime" name="entry.1195697417" required>
                             <option value="" disabled selected>Select preferred time</option>
-                            <option value="12pm Dec 6, 2025">12pm Dec 6, 2025</option>
+                            <option value="12:00pm Dec 6, 2025">12:00pm Dec 6, 2025</option>
                             <option value="2:30pm Dec 6, 2025">2:30pm Dec 6, 2025</option>
                         </select>
                     </div>
@@ -102,7 +102,11 @@
 
         <!-- Page 4 - Success (outside form) -->
         <div class="form-page" id="page4">
-            <div class="success-content">
+            <div class="loading-container" id="loadingContainer" style="display: none;">
+                <div class="spinner"></div>
+                <p class="loading-text">Saving Registration Details</p>
+            </div>
+            <div class="success-content" id="successContent">
                 <svg class="success-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                     <circle class="success-circle" cx="50" cy="50" r="45" fill="none" stroke="#4CAF50" stroke-width="3"/>
                     <path class="success-check" fill="none" stroke="#4CAF50" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M30 50 L45 65 L70 35"/>

@@ -506,6 +506,10 @@ button[type="button"]:disabled:hover {
     opacity: 0;
 }
 
+#page4.active {
+    top: 0;
+}
+
 #page4.active .success-checkmark {
     animation: fadeInBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }

@@ -42,7 +42,6 @@ function loadFormFromCookie() {
                 validatePage2();
                 return true;
             } catch (e) {
-                console.error('Error loading form data from cookie:', e);
             }
         }
     }
@@ -75,18 +74,16 @@ form.target = 'hidden_iframe';
 if (iframe) {
     iframe.onload = function() {
         // Form has been submitted successfully
-        console.log('Form submitted successfully to Google Forms');
 
-        // Transition to success page
-        page3.classList.remove('active');
-        page3.classList.add('slide-out-left');
-        page4.classList.add('active');
-
-        // Hide the form so it doesn't take up space
-        form.style.display = 'none';
-
-        // Position the success page at the top of the card
-        page4.style.top = '0';
+        // Switch from spinner to checkmark
+        const loadingContainer = document.getElementById('loadingContainer');
+        const successContent = document.getElementById('successContent');
+        if (loadingContainer) {
+            loadingContainer.style.display = 'none';
+        }
+        if (successContent) {
+            successContent.style.display = 'flex';
+        }
 
         // Clear the cookie since form was submitted
         clearFormCookie();
@@ -197,23 +194,28 @@ backFromPaymentBtn.addEventListener('click', () => {
 function checkPaymentSuccess() {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('payment') === 'success') {
-        // Payment successful - show loading spinner
-        console.log('Payment successful - showing loading spinner');
+        // Payment successful - navigate to page 4 with spinner
 
-        // Get the form-pages container and replace it with spinner
+        // Hide form-pages and show page 4 with spinner
         const formPages = document.querySelector('.form-pages');
         if (formPages) {
-            formPages.innerHTML = `
-                <div class="loading-container">
-                    <div class="spinner"></div>
-                    <p class="loading-text">Saving Registration Details</p>
-                </div>
-            `;
+            formPages.style.display = 'none';
         }
+
+        // Show page 4 and display the loading spinner
+        const loadingContainer = document.getElementById('loadingContainer');
+        const successContent = document.getElementById('successContent');
+        if (loadingContainer) {
+            loadingContainer.style.display = 'flex';
+        }
+        if (successContent) {
+            successContent.style.display = 'none';
+        }
+        page4.classList.add('active');
 
         // Submit form to Google Forms after a brief delay
         setTimeout(() => {
-            form.submit();
+            form.requestSubmit();
         }, 500);
 
         // Remove the payment=success parameter from URL to prevent resubmission
@@ -226,8 +228,6 @@ form.addEventListener('submit', () => {
     // Don't prevent default - let form submit to iframe
     // The iframe onload event will handle the success page transition
 
-    // Log form values to console for debugging
-    console.log('Submitting to Google Forms:', {
         'Student Name': formState.studentName,
         'Age': formState.age,
         'Gender': formState.gender,
