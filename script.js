@@ -42,6 +42,7 @@ function loadFormFromCookie() {
                 validatePage2();
                 return true;
             } catch (e) {
+                console.error('Error loading form data from cookie:', e);
             }
         }
     }
@@ -74,6 +75,7 @@ form.target = 'hidden_iframe';
 if (iframe) {
     iframe.onload = function() {
         // Form has been submitted successfully
+        console.log('Form submitted successfully to Google Forms');
 
         // Switch from spinner to checkmark
         const loadingContainer = document.getElementById('loadingContainer');
@@ -195,6 +197,7 @@ function checkPaymentSuccess() {
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('payment') === 'success') {
         // Payment successful - navigate to page 4 with spinner
+        console.log('Payment successful - showing loading spinner');
 
         // Hide form-pages and show page 4 with spinner
         const formPages = document.querySelector('.form-pages');
@@ -228,6 +231,8 @@ form.addEventListener('submit', () => {
     // Don't prevent default - let form submit to iframe
     // The iframe onload event will handle the success page transition
 
+    // Log form values to console for debugging
+    console.log('Submitting to Google Forms:', {
         'Student Name': formState.studentName,
         'Age': formState.age,
         'Gender': formState.gender,
