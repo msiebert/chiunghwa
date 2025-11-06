@@ -1,8 +1,8 @@
 // Form state object to track all input values
 const formState = {
     studentName: '',
+    parentName: '',
     age: '',
-    gender: '',
     level: '',
     preferredTime: '',
     duration: ''
@@ -32,8 +32,8 @@ function loadFormFromCookie() {
                 Object.assign(formState, savedState);
                 // Populate form fields
                 if (formState.studentName) studentNameInput.value = formState.studentName;
+                if (formState.parentName) parentNameInput.value = formState.parentName;
                 if (formState.age) ageInput.value = formState.age;
-                if (formState.gender) genderSelect.value = formState.gender;
                 if (formState.level) levelSelect.value = formState.level;
                 if (formState.preferredTime) preferredTimeSelect.value = formState.preferredTime;
                 if (formState.duration) durationInput.value = formState.duration;
@@ -94,8 +94,8 @@ if (iframe) {
 
 // Get all input fields
 const studentNameInput = document.getElementById('studentName');
+const parentNameInput = document.getElementById('parentName');
 const ageInput = document.getElementById('age');
-const genderSelect = document.getElementById('gender');
 const levelSelect = document.getElementById('level');
 const preferredTimeSelect = document.getElementById('preferredTime');
 const durationInput = document.getElementById('duration');
@@ -103,8 +103,8 @@ const durationInput = document.getElementById('duration');
 // Function to validate page 1 fields
 function validatePage1() {
     const isValid = formState.studentName.trim() !== '' &&
-                    formState.age.trim() !== '' &&
-                    formState.gender !== '';
+                    formState.parentName.trim() !== '' &&
+                    formState.age.trim() !== '';
     nextBtn.disabled = !isValid;
 }
 
@@ -123,14 +123,14 @@ studentNameInput.addEventListener('input', (e) => {
     saveFormToCookie();
 });
 
-ageInput.addEventListener('input', (e) => {
-    formState.age = e.target.value;
+parentNameInput.addEventListener('input', (e) => {
+    formState.parentName = e.target.value;
     validatePage1();
     saveFormToCookie();
 });
 
-genderSelect.addEventListener('change', (e) => {
-    formState.gender = e.target.value;
+ageInput.addEventListener('input', (e) => {
+    formState.age = e.target.value;
     validatePage1();
     saveFormToCookie();
 });
@@ -234,8 +234,8 @@ form.addEventListener('submit', () => {
     // Log form values to console for debugging
     console.log('Submitting to Google Forms:', {
         'Student Name': formState.studentName,
+        'Parent Name': formState.parentName,
         'Age': formState.age,
-        'Gender': formState.gender,
         'Level': formState.level,
         'Preferred Time': formState.preferredTime,
         'Performance Duration': formState.duration
