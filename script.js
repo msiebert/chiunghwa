@@ -53,7 +53,7 @@ function clearFormCookie() {
     document.cookie = `${COOKIE_NAME}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`;
 }
 
-const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/test_3cI4gyba8gbvbzm99IbEA00';
+const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/aFadR8gzyfZP7X588i2VG00';
 
 // Get all form elements
 const form = document.getElementById('registrationForm');
