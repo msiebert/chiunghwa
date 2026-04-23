@@ -74,10 +74,20 @@ form.target = 'hidden_iframe';
 // Listen for iframe load event (form submission complete)
 if (iframe) {
     iframe.onload = function() {
-        // Form has been submitted successfully
-        console.log('Form submitted successfully to Google Forms');
+        try {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            const errorEl = iframeDoc.querySelector('[data-validation-failed="true"]');
+            if (errorEl) {
+                const loadingContainer = document.getElementById('loadingContainer');
+                if (loadingContainer) {
+                    loadingContainer.innerHTML = '<p style="color:red;text-align:center;">Registration failed. Please try again or contact us.</p>';
+                }
+                return;
+            }
+        } catch (e) {
+            // Cross-origin restriction — can't inspect iframe, assume success
+        }
 
-        // Switch from spinner to checkmark
         const loadingContainer = document.getElementById('loadingContainer');
         const successContent = document.getElementById('successContent');
         if (loadingContainer) {
@@ -86,8 +96,6 @@ if (iframe) {
         if (successContent) {
             successContent.style.display = 'flex';
         }
-
-        // Clear the cookie since form was submitted
         clearFormCookie();
     };
 }
