@@ -51,6 +51,7 @@ body::before {
     width: 90%;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: visible;
 }
 
 h1 {
@@ -118,6 +119,18 @@ form {
         transform: translateX(0);
         opacity: 1;
     }
+}
+
+.deadline-notice {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #b94a00;
+    text-align: center;
 }
 
 .form-group {
