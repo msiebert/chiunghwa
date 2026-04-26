@@ -8,49 +8,36 @@ const formState = {
     duration: ''
 };
 
-// Cookie helper functions
-const COOKIE_NAME = 'suzukiFormData';
-const COOKIE_DAYS = 7;
+// sessionStorage helper functions (survives Stripe redirect, not affected by Safari ITP)
+const STORAGE_KEY = 'suzukiFormData';
 
 function saveFormToCookie() {
-    const formData = JSON.stringify(formState);
-    const expires = new Date();
-    expires.setTime(expires.getTime() + COOKIE_DAYS * 24 * 60 * 60 * 1000);
-    document.cookie = `${COOKIE_NAME}=${encodeURIComponent(formData)};expires=${expires.toUTCString()};path=/`;
+    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(formState));
 }
 
 function loadFormFromCookie() {
-    const nameEQ = COOKIE_NAME + "=";
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i].trim();
-        if (cookie.indexOf(nameEQ) === 0) {
-            const cookieValue = cookie.substring(nameEQ.length);
-            try {
-                const savedState = JSON.parse(decodeURIComponent(cookieValue));
-                // Restore formState
-                Object.assign(formState, savedState);
-                // Populate form fields
-                if (formState.studentName) studentNameInput.value = formState.studentName;
-                if (formState.parentName) parentNameInput.value = formState.parentName;
-                if (formState.age) ageInput.value = formState.age;
-                if (formState.level) levelSelect.value = formState.level;
-                if (formState.preferredTime) preferredTimeSelect.value = formState.preferredTime;
-                if (formState.duration) durationInput.value = formState.duration;
-                // Re-validate buttons
-                validatePage1();
-                validatePage2();
-                return true;
-            } catch (e) {
-                console.error('Error loading form data from cookie:', e);
-            }
-        }
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+    if (!saved) return false;
+    try {
+        const savedState = JSON.parse(saved);
+        Object.assign(formState, savedState);
+        if (formState.studentName) studentNameInput.value = formState.studentName;
+        if (formState.parentName) parentNameInput.value = formState.parentName;
+        if (formState.age) ageInput.value = formState.age;
+        if (formState.level) levelSelect.value = formState.level;
+        if (formState.preferredTime) preferredTimeSelect.value = formState.preferredTime;
+        if (formState.duration) durationInput.value = formState.duration;
+        validatePage1();
+        validatePage2();
+        return true;
+    } catch (e) {
+        console.error('Error loading form data from sessionStorage:', e);
+        return false;
     }
-    return false;
 }
 
 function clearFormCookie() {
-    document.cookie = `${COOKIE_NAME}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`;
+    sessionStorage.removeItem(STORAGE_KEY);
 }
 
 const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/aFadR8gzyfZP7X588i2VG00';
